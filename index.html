@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zakat calculator+</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form>
+            <label>Currency (نقدی):
+                <input type="text" name="currency" placeholder="Enter currency amount (in pkr)" />
+            </label>
+            <label>merchandise (مال تجارت):
+            <input type="text" name="merchandise" placeholder="Enter merchandise amount (in pkr)" />
+            </label>
+            <label>gold (سونا):
+            <input type="text" name="gold" placeholder="Enter gold amount (in tola)" />
+            </label>
+            <label>gold-rate (per tola):
+            <input type="text" name="goldRate" placeholder="Enter gold rate (in pkr)" />
+            </label>
+            <label>silver (چاندی):
+            <input type="text" name="silver" placeholder="Enter silver amount (in tola)" />
+            </label>
+            <label>silver-rate (per tola):
+            <input type="text" id="silverRate" name="silverRate" placeholder="Enter silver rate (in pkr)" />
+            </label>
+            <input type="submit" id="submit-btn">
+        </form>
+        <div id="box"></div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
