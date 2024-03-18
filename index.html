@@ -4,31 +4,94 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Zakat calculator+</title>
-        <link rel="stylesheet" href="style.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <form>
-            <label>Currency (نقدی):
-                <input type="text" name="currency" placeholder="Enter currency amount (in pkr)" />
-            </label>
-            <label>merchandise (مال تجارت):
-            <input type="text" name="merchandise" placeholder="Enter merchandise amount (in pkr)" />
-            </label>
-            <label>gold (سونا):
-            <input type="text" name="gold" placeholder="Enter gold amount (in tola)" />
-            </label>
-            <label>gold-rate (per tola):
-            <input type="text" name="goldRate" placeholder="Enter gold rate (in pkr)" />
-            </label>
-            <label>silver (چاندی):
-            <input type="text" name="silver" placeholder="Enter silver amount (in tola)" />
-            </label>
-            <label>silver-rate (per tola):
-            <input type="text" id="silverRate" name="silverRate" placeholder="Enter silver rate (in pkr)" />
-            </label>
-            <input type="submit" id="submit-btn">
-        </form>
-        <div id="box"></div>
+        <!-- Main Div -->
+        <div class="main" id="main1">
+            <!-- 1st Div -->
+            <div class="first-div">
+                <h1>CALCULATE</h1>
+                <h1>YOUR ZAKAT</h1>
+            </div>
+            <div class="second-div">
+                <form>
+                    <div class="input-divs">
+                        <fieldset>
+                            <legend>Currency (نقدی)</legend>
+                            <input
+                                autocomplete="off"
+                                type="text"
+                                name="currency"
+                                placeholder="Enter currency amount (in pkr)"
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Merchandise (مال تجارت)</legend>
+                            <input
+                                autocomplete="off"
+                                type="text"
+                                name="merchandise"
+                                placeholder="Enter merchandise amount (in pkr)"
+                            />
+                        </fieldset>
+                    </div>
+                    <div class="input-divs">
+                        <fieldset>
+                            <legend>Gold (سونا)</legend>
+                            <input autocomplete="off" type="text" name="gold" placeholder="Enter gold amount (in tola)" />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Gold Rate (per tola)</legend>
+                            <input
+                                autocomplete="off"
+                                type="text"
+                                name="goldRate"
+                                placeholder="Enter current gold rate (in pkr)"
+                            />
+                        </fieldset>
+                    </div>
+                    <div class="input-divs">
+                        <fieldset>
+                            <legend>Silver (چاندی)</legend>
+                            <input
+                                autocomplete="off"
+                                type="text"
+                                name="silver"
+                                placeholder="Enter silver amount (in tola)"
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Silver Rate (per tola)</legend>
+                            <input
+                                autocomplete="off"
+                                type="text"
+                                id="silverRate"
+                                name="silverRate"
+                                placeholder="Enter current silver rate (in pkr)"
+                            />
+                        </fieldset>
+                    </div>
+                    <input type="submit" id="submit-btn" />
+                </form>
+            </div>
+        </div>
+
+        <!-- 2nd Div -->
+        <div class="main" id="main2" style="display: none">
+            <div class="first-div" id="zakat-box1" style="padding-top: 130px; z-index: 1; height: 150px; width: 300px">
+                <img src="images/moneypng.parspng.com-4.png" alt="Gold Image" />
+            </div>
+            <div class="second-div" id="zakat-box2" style="display: flex; flex-direction: column; align-items: center">
+                <h2>Zakat that you have to pay is...</h2>
+                <h1 id="showZakatBox"></h1>
+                <button onclick="back()">BACK</button>
+            </div>
+        </div>
 
         <script src="app.js"></script>
     </body>

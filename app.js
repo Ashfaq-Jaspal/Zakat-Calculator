@@ -1,7 +1,5 @@
 let form = document.querySelector(`form`);
-let box = document.querySelector(`#box`);
 let submitBtn = document.querySelector(`#submit-btn`);
-
 form.addEventListener(`submit`, (event) => {
     let currency = event.target.currency.value;
     let merchandise = event.target.merchandise.value;
@@ -9,18 +7,25 @@ form.addEventListener(`submit`, (event) => {
     let goldRate = event.target.goldRate.value;
     let silver = event.target.silver.value;
     let silverRate = event.target.silverRate.value;
-
     // Condition 1 (only currency exists)
     if (currency !== `` && silver === `` && gold === `` && merchandise === ``) {
         console.log(`cond 1(Currency) is true`);
         if (silverRate === ``) {
             alert(`Please Enter Silver Rate (per tola)`);
-        } else if ( parseFloat(currency) >= (parseFloat(silverRate) * 52.5)) {
+        } else if (parseFloat(currency) >= parseFloat(silverRate) * 52.5) {
             let totalAmount = parseFloat(currency);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 2 (only merchandise exists)
@@ -28,12 +33,20 @@ form.addEventListener(`submit`, (event) => {
         console.log(`cond 2(Merchandise) is true`);
         if (silverRate === ``) {
             alert(`Please Enter Silver Rate (per tola)`);
-        } else if ( parseFloat(merchandise) >= (parseFloat(silverRate) * 52.5)) {
+        } else if (parseFloat(merchandise) >= parseFloat(silverRate) * 52.5) {
             let totalAmount = parseFloat(merchandise);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 3 (only gold exists)
@@ -46,10 +59,18 @@ form.addEventListener(`submit`, (event) => {
                 let goldPrice = parseFloat(gold) * parseFloat(goldRate);
                 let totalAmount = goldPrice;
                 let zakat = totalAmount / 40;
-                box.innerText = zakat;
+                document.getElementById(`showZakatBox`).innerText = zakat;
+                console.log(zakat);
+                let zakatBox = document.getElementById(`main2`);
+                zakatBox.style.display = `flex`;
+                document.getElementById(`main1`).style.display = `none`;
             }
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 4 (Only silver exists)
@@ -62,160 +83,298 @@ form.addEventListener(`submit`, (event) => {
                 let silverPrice = parseFloat(silver) * parseFloat(silverRate);
                 let totalAmount = silverPrice;
                 let zakat = totalAmount / 40;
-                box.innerText = zakat;
+                document.getElementById(`showZakatBox`).innerText = zakat;
+                console.log(zakat);
+                let zakatBox = document.getElementById(`main2`);
+                zakatBox.style.display = `flex`;
+                document.getElementById(`main1`).style.display = `none`;
             }
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 5 (Currency & Merchendise exist and others are empty)
-    if ((currency !== `` && merchandise !== ``) && (silver === `` && gold === ``)) {
+    if (currency !== `` && merchandise !== `` && silver === `` && gold === ``) {
         console.log(`cond 5(Currency & Merchendise) is true`);
         if (silverRate === ``) {
             alert(`Please Enter Silver Rate (per tola)`);
-        } else if ( (parseFloat(currency) + parseFloat(merchandise)) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = (parseFloat(currency) + parseFloat(merchandise));
+        } else if (parseFloat(currency) + parseFloat(merchandise) >= parseFloat(silverRate) * 52.5) {
+            let totalAmount = parseFloat(currency) + parseFloat(merchandise);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 6 (Currency & Gold exist and others are empty)
-    if ((currency !== `` && gold !== ``) && (silver === `` && merchandise === ``)) {
+    if (currency !== `` && gold !== `` && silver === `` && merchandise === ``) {
         console.log(`cond 6(Currency & Gold) is true`);
         if (silverRate === `` || goldRate === ``) {
             alert(`Please Enter Silver & Gold Rate (per tola)`);
-        } else if ( (parseFloat(currency) + (parseFloat(gold) * parseFloat(goldRate))) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = (parseFloat(currency) + (parseFloat(gold) * parseFloat(goldRate)));
+        } else if (parseFloat(currency) + parseFloat(gold) * parseFloat(goldRate) >= parseFloat(silverRate) * 52.5) {
+            let totalAmount = parseFloat(currency) + parseFloat(gold) * parseFloat(goldRate);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 7 (Currency & Silver exist and others are empty)
-    if ((currency !== `` && silver !== ``) && (merchandise === `` && gold === ``)) {
+    if (currency !== `` && silver !== `` && merchandise === `` && gold === ``) {
         console.log(`cond 7(Currency & Silver) is true`);
         if (silverRate === ``) {
             alert(`Please Enter Silver Rate (per tola)`);
-        } else if ( (parseFloat(currency) + (parseFloat(silver) * parseFloat(silverRate))) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = (parseFloat(currency) + (parseFloat(silver) * parseFloat(silverRate)));
+        } else if (parseFloat(currency) + parseFloat(silver) * parseFloat(silverRate) >= parseFloat(silverRate) * 52.5) {
+            let totalAmount = parseFloat(currency) + parseFloat(silver) * parseFloat(silverRate);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 8 (Merchandise & Gold exist and others are empty)
-    if ((merchandise !== `` && gold !== ``) && (currency === `` && silver === ``)) {
+    if (merchandise !== `` && gold !== `` && currency === `` && silver === ``) {
         console.log(`cond 8(Merchandise & Gold) is true`);
         if (silverRate === `` || goldRate === ``) {
             alert(`Please Enter Silver & Gold Rate (per tola)`);
-        } else if ( (parseFloat(merchandise) + (parseFloat(gold) * parseFloat(goldRate))) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = (parseFloat(merchandise) + (parseFloat(gold) * parseFloat(goldRate)));
+        } else if (parseFloat(merchandise) + parseFloat(gold) * parseFloat(goldRate) >= parseFloat(silverRate) * 52.5) {
+            let totalAmount = parseFloat(merchandise) + parseFloat(gold) * parseFloat(goldRate);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 9 (Merchandise & Silver exist and others are empty)
-    if ((merchandise !== `` && silver !== ``) && (currency === `` && gold === ``)) {
+    if (merchandise !== `` && silver !== `` && currency === `` && gold === ``) {
         console.log(`cond 9(Merchandise & Silver) is true`);
         if (silverRate === ``) {
             alert(`Please Enter Silver Rate (per tola)`);
-        } else if ( (parseFloat(merchandise) + (parseFloat(silver) * parseFloat(silverRate))) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = (parseFloat(merchandise) + (parseFloat(silver) * parseFloat(silverRate)));
+        } else if (parseFloat(merchandise) + parseFloat(silver) * parseFloat(silverRate) >= parseFloat(silverRate) * 52.5) {
+            let totalAmount = parseFloat(merchandise) + parseFloat(silver) * parseFloat(silverRate);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 10 (Gold & Silver exist and others are empty)
-    if ((gold !== `` && silver !== ``) && (currency === `` && merchandise === ``)) {
+    if (gold !== `` && silver !== `` && currency === `` && merchandise === ``) {
         console.log(`cond 10(Gold & Silver) is true`);
         if (silverRate === `` || goldRate === ``) {
             alert(`Please Enter Silver & Gold Rate (per tola)`);
-        } else if ( ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate))) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate)));
+        } else if (
+            parseFloat(gold) * parseFloat(goldRate) + parseFloat(silver) * parseFloat(silverRate) >=
+            parseFloat(silverRate) * 52.5
+        ) {
+            let totalAmount = parseFloat(gold) * parseFloat(goldRate) + parseFloat(silver) * parseFloat(silverRate);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 11 (currency & gold & silver exist and merchandise is empty)
-    if ((currency !== `` && gold !== `` && silver !== ``) && merchandise === ``) {
+    if (currency !== `` && gold !== `` && silver !== `` && merchandise === ``) {
         console.log(`cond 11(currency & gold & silver) is true`);
         if (silverRate === `` || goldRate === ``) {
             alert(`Please Enter Silver & Gold Rate (per tola)`);
-        } else if ( ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate)) + parseFloat(currency)) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate)) + parseFloat(currency));
+        } else if (
+            parseFloat(gold) * parseFloat(goldRate) + parseFloat(silver) * parseFloat(silverRate) + parseFloat(currency) >=
+            parseFloat(silverRate) * 52.5
+        ) {
+            let totalAmount =
+                parseFloat(gold) * parseFloat(goldRate) + parseFloat(silver) * parseFloat(silverRate) + parseFloat(currency);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 12 (currency & gold & merchandise exist and silver is empty)
-    if ((currency !== `` && gold !== `` && merchandise !== ``) && silver === ``) {
+    if (currency !== `` && gold !== `` && merchandise !== `` && silver === ``) {
         console.log(`cond 12(currency & gold & merchandise) is true`);
         if (silverRate === `` || goldRate === ``) {
             alert(`Please Enter Silver & Gold Rate (per tola)`);
-        } else if ( ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(currency)) + parseFloat(merchandise)) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(currency)) + parseFloat(merchandise));
+        } else if (
+            parseFloat(gold) * parseFloat(goldRate) + parseFloat(currency) + parseFloat(merchandise) >=
+            parseFloat(silverRate) * 52.5
+        ) {
+            let totalAmount = parseFloat(gold) * parseFloat(goldRate) + parseFloat(currency) + parseFloat(merchandise);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 13 (currency & merchandise & silver exist and gold is empty)
-    if ((currency !== `` && merchandise !== `` && silver !== ``) && gold === ``) {
+    if (currency !== `` && merchandise !== `` && silver !== `` && gold === ``) {
         console.log(`cond 13(currency & merchandise & silver) is true`);
         if (silverRate === ``) {
             alert(`Please Enter Silver Rate (per tola)`);
-        } else if ( ((parseFloat(silver) * parseFloat(silverRate)) + (parseFloat(currency)) + parseFloat(merchandise)) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = ((parseFloat(silver) * parseFloat(silverRate)) + (parseFloat(currency)) + parseFloat(merchandise));
+        } else if (
+            parseFloat(silver) * parseFloat(silverRate) + parseFloat(currency) + parseFloat(merchandise) >=
+            parseFloat(silverRate) * 52.5
+        ) {
+            let totalAmount = parseFloat(silver) * parseFloat(silverRate) + parseFloat(currency) + parseFloat(merchandise);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 14 (gold & merchandise & silver exist and currency is empty)
-    if ((gold !== `` && merchandise !== `` && silver !== ``) && silver === ``) {
+    if (gold !== `` && merchandise !== `` && silver !== `` && silver === ``) {
         console.log(`cond 14(gold & merchandise & silver) is true`);
         if (silverRate === `` || goldRate === ``) {
             alert(`Please Enter Silver & Gold Rate (per tola)`);
-        } else if ( ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate)) + parseFloat(merchandise)) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate)) + parseFloat(merchandise));
+        } else if (
+            parseFloat(gold) * parseFloat(goldRate) +
+                parseFloat(silver) * parseFloat(silverRate) +
+                parseFloat(merchandise) >=
+            parseFloat(silverRate) * 52.5
+        ) {
+            let totalAmount =
+                parseFloat(gold) * parseFloat(goldRate) +
+                parseFloat(silver) * parseFloat(silverRate) +
+                parseFloat(merchandise);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
     // Condition 15 (All fields are empty)
-    else if ( (silver === `` && currency === `` && gold === `` && merchandise === `` && goldRate === `` && silverRate === ``) || ((silver === `` && currency === `` && gold === `` && merchandise === ``) && ((goldRate !== `` || silverRate !== ``) || (goldRate !== `` && silverRate !== ``))) ) {
+    else if (
+        (silver === `` && currency === `` && gold === `` && merchandise === `` && goldRate === `` && silverRate === ``) ||
+        (silver === `` &&
+            currency === `` &&
+            gold === `` &&
+            merchandise === `` &&
+            (goldRate !== `` || silverRate !== `` || (goldRate !== `` && silverRate !== ``)))
+    ) {
         console.log(`Cond 15(All empty) is true`);
-        alert(`Please fill out these fields below`)
+        alert(`Please fill out these fields below`);
     }
     // Condition 16 (All fields are filled)
-    if ( (currency !== `` && merchandise !== `` && silver !== `` && gold !== ``) ) {
+    if (currency !== `` && merchandise !== `` && silver !== `` && gold !== ``) {
         console.log(`cond 16(All filled) is true`);
         if (silverRate === `` || goldRate === ``) {
             alert(`Please Enter Silver & Gold Rate (per tola)`);
-        } else if ( ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate)) + parseFloat(currency) + parseFloat(merchandise)) >= (parseFloat(silverRate) * 52.5)) {
-            let totalAmount = ((parseFloat(gold) * parseFloat(goldRate)) + (parseFloat(silver) * parseFloat(silverRate)) + parseFloat(currency) + parseFloat(merchandise));
+        } else if (
+            parseFloat(gold) * parseFloat(goldRate) +
+                parseFloat(silver) * parseFloat(silverRate) +
+                parseFloat(currency) +
+                parseFloat(merchandise) >=
+            parseFloat(silverRate) * 52.5
+        ) {
+            let totalAmount =
+                parseFloat(gold) * parseFloat(goldRate) +
+                parseFloat(silver) * parseFloat(silverRate) +
+                parseFloat(currency) +
+                parseFloat(merchandise);
             let zakat = totalAmount / 40;
-            box.innerText = zakat;
+            document.getElementById(`showZakatBox`).innerText = zakat;
+            console.log(zakat);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         } else {
-            box.innerText = `No zakat`;
+            document.getElementById(`showZakatBox`).innerText = `No zakat`;
+            console.log(`No zakat`);
+            let zakatBox = document.getElementById(`main2`);
+            zakatBox.style.display = `flex`;
+            document.getElementById(`main1`).style.display = `none`;
         }
     }
 
     event.preventDefault();
 });
+
+function back() {
+    window.location.reload();
+}
